@@ -1,91 +1,91 @@
 @font-face {
-  font-family: SaginaBold;
-  src: url(SaginawBold.ttf);
-  font-weight: bold;
+	font-family: SaginaBold;
+	src: url(SaginawBold.ttf);
+	font-weight: bold;
 }
 
 html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, img, table, tr, th, td {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  vertical-align: baseline;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	vertical-align: baseline;
 }
 
 html {
-  overflow: -moz-scrollbars-vertical; 
-  overflow-y: scroll;
+	overflow: -moz-scrollbars-vertical; 
+	overflow-y: scroll;
 }
 
 body {
-  font-family: Arial, helvetica, sans-serif;
-  color: #333;
-  line-height: 1;
+	font-family: Arial, helvetica, sans-serif;
+	color: #333;
+	line-height: 1;
 }
 
 #main {
-  width: 700px;
-  padding: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  border-collapse: collapse;
-  border-spacing: 0; 
-  text-align: center;
+	width: 700px;
+	padding: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	border-collapse: collapse;
+	border-spacing: 0; 
+	text-align: center;
 }
 
 .left-container {
-  width: 320px;
-  float: left;
-  padding: 5px;
+	width: 320px;
+	float: left;
+	padding: 5px;
 }
 
 .right-container {
-  width: 320px;
-  float: right;
-  padding: 5px;
+	width: 320px;
+	float: right;
+	padding: 5px;
 }
 
 h1 {
-  font-family: SaginaBold;
-  font-weight: bold;
-  font-size: 3em;
-  margin: 10px 0 20px;
+	font-family: SaginaBold;
+	font-weight: bold;
+	font-size: 3em;
+	margin: 10px 0 20px;
 }
 
 h1 a {
-  text-decoration: none;
-  color: #000;
+	text-decoration: none;
+	color: #000;
 }
 
 h2, h3 {
-  font-size: 1em;
-  margin:10px 0 10px;
+	font-size: 1em;
+	margin:10px 0 10px;
 }
 
 textarea {
-  width: 314px;
-  font-size: 1.2em;
-  resize: none;
-  outline: none;
-  border: 1px solid #888; 
-  font-family: Arial;
+	width: 314px;
+	font-size: 1.2em;
+	resize: none;
+	outline: none;
+	border: 1px solid #888; 
+	font-family: Arial;
 }
 
 input[type=search], input[type=text] {
-  width: 318px;
-  height: 1.5em;
-  font-size: 1.2em;
-  border: 1px solid #888; 
-  -webkit-appearance: none;
+	width: 318px;
+	height: 1.5em;
+	font-size: 1.2em;
+	border: 1px solid #888; 
+	-webkit-appearance: none;
 }
 
 .module {
 	margin: 0 0 20px 0;
-  font-size: .9em;
-  text-align: left;
-  padding-bottom: 1em;
-  word-wrap: break-word;
+	font-size: .9em;
+	text-align: left;
+	padding-bottom: 1em;
+	word-wrap: break-word;
 }
 
 .module h2 {
@@ -93,7 +93,7 @@ input[type=search], input[type=text] {
 	line-height: 2;
 	padding: 0 0 0 10px;
 	font-size: 1em;
-  text-align: left;
+	text-align: left;
 	box-shadow: inset 0 25px 10px -10px rgba(255, 255, 255, 0.2);
 }
 
@@ -119,7 +119,7 @@ input[type=search], input[type=text] {
 }
 
 .module h2 a:before, .module h2 a:after {
-  content: "";
+	content: "";
 	position: absolute;
 	top: 50%;
 	width: 0;
@@ -154,3 +154,33 @@ input[type=search], input[type=text] {
 	border-right-color: #bbffcf;
 }
 
+@media (max-width: 768px) {
+	#main {
+		width: 680px;
+		padding: 0px;
+	}
+}
+
+@media (max-width: 480px) {
+	textarea {
+		width: 284px;
+	}
+	#main {
+		width: 300px;
+		padding: 0px;
+	}
+	input[type=search], input[type=text] {
+		width: 288px;
+		height: 1.8em;
+	}
+	.left-container {
+		width: 290px;
+		float: none;
+		border-bottom: 3px solid #DDD;
+	}
+	.right-container {
+		width: 290px;
+		float: none;
+		border-top: 3px solid #DDD;
+	}
+}
