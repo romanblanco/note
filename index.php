@@ -7,7 +7,6 @@
 		<title>Note</title>
 		<link rel="stylesheet" href="./files/style.css" type="text/css">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
 		<script src="./files/autoresize.jquery.js"></script>
 		<script src="./files/shortcuts.jquery.js"></script>
 	</head>
@@ -30,13 +29,11 @@
 				<?php addNew($connection); ?>
 			</div>
 			<div class="right-container">
-				<div class="form">
 					<form method="post" action="<?php echo $_SERVER["PHP_SELF"] ?>">
 					<h2>Notes: </h2>
 						<input id="search" type="search" placeholder=" Search..." name="search">
 						<input type="submit" style="visibility: hidden;" /> 
 					</form>
-				</div>
 				<?php printNote($connection); ?>
 			</div>
 		</div>

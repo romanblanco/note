@@ -5,22 +5,27 @@
 	$user = "root";
 	$password = "";
 	$database = "note";
-	
+
 	$connection = mysqli_connect($host, $user, $password, $database);
 	// control of database connection
 	if (mysqli_connect_errno($connection)) {
 		echo "Connection to MySQL database failed: ".mysqli_connect_error();
 		exit;
 	}
-		
+
+	mysqli_query($connection, "SET NAMES utf8");
+
 	function tagList($connection) {
 		// select all items from 'tag' table
-		$sqlTask = mysqli_query($connection, "SELECT DISTINCT `tag` FROM `notes`");
+		$sqlTask = mysqli_query($connection, "
+			SELECT DISTINCT `tag` 
+			FROM `notes`
+		");
 		while ($result = mysqli_fetch_array($sqlTask)) {
 			echo "<option value=\"" . $result[tag] . "\">" . $result[tag] . "</option>\n";
 		}
 	}
-	
+
 	function addNew($connection) {
 		// adding new note into database
 		// controll if required form aren't empty
@@ -41,7 +46,7 @@
 			}
 		}
 	}
-	
+
 	function printNote($connection) {
 		if (isset($_GET['tag'])) {
 			if ($_GET['tag'] !== '') { 
