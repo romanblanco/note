@@ -1,18 +1,16 @@
 <?php
-	
-	// connection to database
-	$host = "localhost";
-	$user = "root";
-	$password = "";
-	$database = "note";
 
-	$connection = mysqli_connect($host, $user, $password, $database);
+	// connection to database
+	define("DB_SERVER", "localhost");
+	define("DB_USER", "root");
+	define("DB_PASSWORD", "");
+	define("DB_DATABASE", "note");
+	$connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
 	// control of database connection
 	if (mysqli_connect_errno($connection)) {
 		echo "Connection to MySQL database failed: ".mysqli_connect_error();
 		exit;
 	}
-
 	mysqli_query($connection, "SET NAMES utf8");
 
 	function tagList($connection) {
@@ -28,7 +26,6 @@
 
 	function addNew($connection) {
 		// adding new note into database
-		// controll if required form aren't empty
 		if (isset($_REQUEST['note']) && (isset($_REQUEST['topic']))) {
 			if ($_REQUEST['note'] !== '' && $_REQUEST['topic'] !== '') {
 				$_topic = trim(HTMLSpecialChars($_POST[topic]));
@@ -47,7 +44,7 @@
 		}
 	}
 
-	function printNote($connection) {
+	function getNote($connection) {
 		if (isset($_GET['tag'])) {
 			if ($_GET['tag'] !== '') { 
 				// display only chosen tag
@@ -58,31 +55,21 @@
 					ORDER BY `date` 
 					DESC
 				");
-				while ($result = mysqli_fetch_array($sqlTask)) {
-					echo "<div class=\"module green\">\n";
-					echo "<h2>". $result['topic']. "<a href=\"" . $_SERVER["PHP_SELF"] . "?tag=" . $result['tag'] . "\">" . $result['tag'] . "</a></h2>\n";
-					echo nl2br($result['note'])."\n";
-					echo "</div>\n";
-				}
+				printNote($sqlTask);
 			}
-		} elseif (isset($_REQUEST['search'])) {
-			if ($_REQUEST['search'] !== '') { 
+		} elseif (isset($_POST['search'])) {
+			if ($_POST['search'] !== '') { 
 				// display all items that are matched with looked form
 				$sqlTask = mysqli_query($connection, "
 					SELECT * 
 					FROM `notes` 
-					WHERE (`topic` REGEXP '$_REQUEST[search]' 
-					OR `note` REGEXP '$_REQUEST[search]' 
-					OR `tag` REGEXP '$_REQUEST[search]' 
-					OR `date` REGEXP '$_REQUEST[search]') 
+					WHERE (`topic` REGEXP '$_POST[search]' 
+					OR `note` REGEXP '$_POST[search]' 
+					OR `tag` REGEXP '$_POST[search]' 
+					OR `date` REGEXP '$_POST[search]') 
 					ORDER BY `date`
 				");
-				while ($result = mysqli_fetch_array($sqlTask)) {
-					echo "<div class=\"module green\">\n";
-					echo "<h2>". $result['topic']. "<a href=\"" . $_SERVER["PHP_SELF"] . "?tag=" . $result['tag'] . "\">" . $result['tag'] . "</a></h2>\n";
-					echo nl2br($result['note'])."\n";
-					echo "</div>\n";
-				}
+				printNote($sqlTask);
 			}
 		} else {
 			// display all items
@@ -92,13 +79,18 @@
 				ORDER BY `date` 
 				DESC
 			");
-			while ($result = mysqli_fetch_array($sqlTask)) {
-				echo "<div class=\"module green\">\n";
-				echo "<h2>". $result['topic']. "<a href=\"" . $_SERVER["PHP_SELF"] . "?tag=" . $result['tag'] . "\">" . $result['tag'] . "</a></h2>\n";
-				echo nl2br($result['note'])."\n";
-				echo "</div>\n";
-			}
+			printNote($sqlTask);
 		}
 		mysqli_close($connection);
 	}
+
+	function printNote($sqlTask) {
+		while ($result = mysqli_fetch_array($sqlTask)) {
+			echo "<div class=\"module green\">\n";
+			echo "<h3>". $result['topic']. "<a href=\"" . $_SERVER["PHP_SELF"] . "?tag=" . $result['tag'] . "\">" . $result['tag'] . "</a></h3>\n";
+			echo nl2br($result['note'])."\n";
+			echo "</div>";
+		}
+	}
+
 ?>
