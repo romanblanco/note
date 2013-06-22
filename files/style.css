@@ -193,7 +193,7 @@ h2, h3 {
 
 .module .note {
 	background: #fff;
-	padding: 10px;
+	padding: 0 10px 10px 10px;
 	line-height: 1.3;
 }
 
@@ -204,11 +204,15 @@ h2, h3 {
 
 .module .info img {
 	height: 15px;
-	padding: 7px;
+	padding: 7px 5px 7px 10px;
+}
+
+.module .info a {
+	text-decoration: none;
 }
 
 .module .info span {
-	padding-top: 10px;
+	padding-top: 8.5px;
 	float: right;
 }
 
