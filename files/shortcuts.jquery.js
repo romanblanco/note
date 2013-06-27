@@ -1,15 +1,15 @@
-$(document).ready(function(){
-	$(document).keypress(function(event) {
-		var tag = event.target.tagName.toLowerCase();
-		if (tag != 'input' && tag != 'textarea') {
-			switch (event.keyCode) {
-				case 110: $("input[name='topic']").focus(); break;
-				case 47: $("input[name='search']").focus(); break;
-				case 94: $("html, body").animate({ scrollTop: 0 }, "slow"); break;
-			}
-		}
+	Mousetrap.bind('g h', function() {
+		window.location.replace("./index.php");
 	});
-});
+	Mousetrap.bind('/', function() {
+		$("input[name='search']").focus();
+	});
+	Mousetrap.bind('n', function() {
+		$("input[name='topic']").focus();
+	});
+	Mousetrap.bind('^', function() {
+		$("html, body").animate({ scrollTop: 0 }, "slow");
+	});
 
 function notify() {
 	$(".notify").fadeIn("slow");

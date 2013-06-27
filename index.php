@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="./files/style.css" type="text/css">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 		<script src="./files/autoresize.jquery.js"></script>
+		<script src="./files/mousetrap.min.js"></script>
 		<script src="./files/shortcuts.jquery.js"></script>
 	</head>
 	<body>
@@ -30,7 +31,7 @@
 				<?php addNew($connection); ?>
 			</div>
 			<div class="right-container">
-				<form  id="search" method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+				<form  id="search" method="get" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
 					<h2>Notes: </h2>
 					<input id="search" type="search" placeholder=" Search..." name="search">
 					<input type="submit" style="visibility: hidden;">

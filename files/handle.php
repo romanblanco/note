@@ -60,16 +60,16 @@
 			}
 		} 
 			// display all items that are matched with looked form
-			elseif (isset($_POST['search'])) {
-			if ($_POST['search'] !== '') { 
-				$_POST['search'] = HTMLSpecialChars($_POST['search']);
+			elseif (isset($_GET['search'])) {
+			if ($_GET['search'] !== '') { 
+				$_GET['search'] = HTMLSpecialChars($_GET['search']);
 				$sqlTask = mysqli_query($connection, "
 					SELECT * 
 					FROM `notes` 
-					WHERE (`topic` REGEXP '$_POST[search]' 
-					OR `note` REGEXP '$_POST[search]' 
-					OR `tag` REGEXP '$_POST[search]' 
-					OR `date` REGEXP '$_POST[search]') 
+					WHERE (`topic` REGEXP '$_GET[search]' 
+					OR `note` REGEXP '$_GET[search]' 
+					OR `tag` REGEXP '$_GET[search]' 
+					OR `date` REGEXP '$_GET[search]') 
 					ORDER BY `date`
 				");
 				printNote($sqlTask);
