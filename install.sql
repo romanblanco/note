@@ -6,6 +6,7 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 DROP TABLE IF EXISTS `notes`;
 CREATE TABLE `notes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user` varchar(35) NOT NULL,
   `topic` varchar(35) NOT NULL,
   `note` text NOT NULL,
   `tag` varchar(20) NOT NULL,

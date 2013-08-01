@@ -1,12 +1,12 @@
 @font-face {
 	font-family: SaginaBold;
-	src: url(SaginawBold.ttf);
+	src: url(font/SaginawBold.ttf);
 	font-weight: bold;
 }
 
 @font-face {
 	font-family: Helvetica;
-	src: url(helvetica-webfont.ttf);
+	src: url(font/helvetica-webfont.ttf);
 	font-weight: bold;
 }
 
@@ -52,7 +52,7 @@ body {
 	margin-right: auto;
 	text-align: center;
 	color: #666;
-display: none;
+	display: none;
 }
 
 .notify.success {

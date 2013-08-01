@@ -1,4 +1,4 @@
-<?php require './files/handle.php'; ?>
+<?php require './handle.php'; ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -7,12 +7,12 @@
 		<title>Note</title>
 		<link rel="stylesheet" href="./files/style.css" type="text/css">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="./files/autoresize.jquery.js"></script>
-		<script src="./files/mousetrap.min.js"></script>
-		<script src="./files/shortcuts.jquery.js"></script>
+		<script src="./files/js/autoresize.jquery.js"></script>
+		<script src="./files/js/mousetrap.min.js"></script>
+		<script src="./files/js/notify.js"></script>
+		<script src="./files/js/shortcuts.jquery.js"></script>
 	</head>
 	<body>
-	<?php changeNotes($connection) ?>
 		<div id="main">
 			<h1><a href="<?php echo $_SERVER["PHP_SELF"]; ?>">Note</a></h1>
 			<div class="left-container">
@@ -26,7 +26,7 @@
 						<?php tagList($connection); ?>
 					</datalist>
 					<input pattern=".{1,20}" type="text" name="tag" list="tags" title="MAX 20 characters" value="<? echo $IfEdit_tag ?>" required>
-					<input type="image" src="./files/add.png" alt="Add">
+					<input type="image" src="./files/img/add.png" alt="Add">
 				</form>
 				<?php addNew($connection); ?>
 			</div>
